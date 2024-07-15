@@ -1,18 +1,20 @@
 opam-version: "2.0"
-homepage:     "https://github.com/mirleft/ocaml-tls"
-dev-repo:     "git+https://github.com/mirleft/ocaml-tls.git"
-bug-reports:  "https://github.com/mirleft/ocaml-tls/issues"
-doc:          "https://mirleft.github.io/ocaml-tls/doc"
-author:       ["David Kaloper <david@numm.org>" "Hannes Mehnert <hannes@mehnert.org>" "Eric Ebinger <github@eric.theebingers.com>" "Calascibetta Romain <romain.calascibetta@gmail.com>"]
-maintainer:   ["Hannes Mehnert <hannes@mehnert.org>" "David Kaloper <david@numm.org>"]
-license:      "BSD-2-Clause"
-
-build: [
-  ["dune" "subst"] {dev}
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+synopsis: "Transport Layer Security purely in OCaml, Async layer"
+description: "Tls-async provides Async-friendly tls bindings"
+maintainer: [
+  "Hannes Mehnert <hannes@mehnert.org>" "David Kaloper <david@numm.org>"
 ]
-
+authors: [
+  "David Kaloper <david@numm.org>"
+  "Hannes Mehnert <hannes@mehnert.org>"
+  "Eric Ebinger <github@eric.theebingers.com>"
+  "Calascibetta Romain <romain.calascibetta@gmail.com>"
+]
+license: "BSD-2-Clause"
+tags: "org:mirage"
+homepage: "https://github.com/mirleft/ocaml-tls"
+doc: "https://mirleft.github.io/ocaml-tls/doc"
+bug-reports: "https://github.com/mirleft/ocaml-tls/issues"
 depends: [
   "ocaml" {>= "4.08.0"}
   "dune" {>= "3.0"}
@@ -26,8 +28,9 @@ depends: [
   "ppx_jane" {>= "v0.16"}
   "mirage-crypto-rng-async"
 ]
-tags: [ "org:mirage"]
-synopsis: "Transport Layer Security purely in OCaml, Async layer"
-description: """
-Tls-async provides Async-friendly tls bindings
-"""
+build: [
+  ["dune" "subst"] {dev}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirleft/ocaml-tls.git"

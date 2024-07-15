@@ -1,18 +1,18 @@
 opam-version: "2.0"
-homepage:     "https://github.com/mirleft/ocaml-tls"
-dev-repo:     "git+https://github.com/mirleft/ocaml-tls.git"
-bug-reports:  "https://github.com/mirleft/ocaml-tls/issues"
-doc:          "https://mirleft.github.io/ocaml-tls/doc"
-author:       ["David Kaloper <david@numm.org>" "Hannes Mehnert <hannes@mehnert.org>"]
-maintainer:   ["Hannes Mehnert <hannes@mehnert.org>" "David Kaloper <david@numm.org>"]
-license:      "BSD-2-Clause"
-
-build: [
-  ["dune" "subst"] {dev}
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+synopsis: "Transport Layer Security purely in OCaml, Lwt layer"
+description:
+  "Tls-lwt provides an effectful Tls_lwt module to be used with Lwt."
+maintainer: [
+  "Hannes Mehnert <hannes@mehnert.org>" "David Kaloper <david@numm.org>"
 ]
-
+authors: [
+  "David Kaloper <david@numm.org>" "Hannes Mehnert <hannes@mehnert.org>"
+]
+license: "BSD-2-Clause"
+tags: "org:mirage"
+homepage: "https://github.com/mirleft/ocaml-tls"
+doc: "https://mirleft.github.io/ocaml-tls/doc"
+bug-reports: "https://github.com/mirleft/ocaml-tls/issues"
 depends: [
   "ocaml" {>= "4.08.0"}
   "dune" {>= "3.0"}
@@ -24,9 +24,12 @@ depends: [
   "ptime" {>= "0.8.1"}
   "randomconv" {with-test & < "0.2.0"}
 ]
-conflicts: [ "result" {< "1.5"} ]
-tags: [ "org:mirage"]
-synopsis: "Transport Layer Security purely in OCaml, Lwt layer"
-description: """
-Tls-lwt provides an effectful Tls_lwt module to be used with Lwt.
-"""
+conflicts: [
+  "result" {< "1.5"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirleft/ocaml-tls.git"
